@@ -6,30 +6,36 @@ from .city import City
 class Detroit(City):
     
     BASE_NAME = 'Detroit'
-    DATE_FORMAT = '%m/%d/%Y %H:%M:%S %p'
+    DATE_FORMAT = '%Y-%m-%dT%H:%M:%S.%f'
+#    DATE_FORMAT = '%m/%d/%Y %H:%M:%S %p'
 
     DATA_URLS = {
-        'all': "https://data.detroitmi.gov/api/views/wgv9-drfc/rows.csv?accessType=DOWNLOAD"
+        'all': "https://opendata.arcgis.com/datasets/2dab2f70653f4bb8b4f2b51619ec8329_0.csv"
     }
     
     USE_YEARS = [2016,2017,2018]
 
     COLUMN_TYPES = {
-        'Victim Zip Code':str,
-        'Victim Business Phone' : str
+        'intaketime' : str,
+        'dispatchtime' : str,
+        'traveltime':str,
+        'totalresponsetime' :str, 
+        'time_on_scene' :str,
+        'totaltime':str, 
+        'totaltime' : str
     }
 
     COLUMN_TRANSFORMS ={
-        'Call Time' : 'date_time',
+        'call_timestamp' : 'date_time',
     }
 
     COLUMN_MAPPINGS = {
-        'call_type' : 'Call Description',
-        'self_initiated' : 'Officer Initiated',
-        'priority' : 'Priority',
-        'beat':'Precinct/Scout Car Area',
-        'call_time' : 'Call Time',
-        'response_time' :'Total Response Time'
+        'call_type' : 'calldescription',
+        'self_initiated' : 'officerinitiated',
+        'priority' : 'priority',
+        'beat':'precinct_sca',
+        'call_time' : 'call_timestamp',
+        'response_time' :'totalresponsetime'
     }
     
     BEAT_FILES  = [
@@ -45,7 +51,7 @@ class Detroit(City):
     RESPONSE_TIME_COLUMN = 'response_time'
 #     INPUT_CRS =  {'init':'EPSG:26971'}
 
-    GEO_COLUMNS_REMAP = { 'Latitude': 'lat' , 'Longitude' : 'lng' }
+    GEO_COLUMNS_REMAP = { 'latitude': 'lat' , 'longitude' : 'lng' }
 #     GEO_UNIT_CONVERSION =  0.3048  #Feet to meters
 
     def preprocess(self):

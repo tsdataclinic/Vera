@@ -40,7 +40,6 @@ def assign_self_initiated(city):
     
 def assign_call_type_mapping(city):
     call_maps = load_call_mappings()
-    print(call_maps.head())
     call_maps = call_maps[call_maps['City'].str.replace(" ","") == city.BASE_NAME ]
     call_maps= call_maps.set_index('in_category').to_dict()['out_category']
     

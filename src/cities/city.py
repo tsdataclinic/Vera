@@ -196,7 +196,10 @@ class City:
         self.download_geoms(city_dir)
         
     def load_and_fix_types(self,file):
-        data = pd.read_csv(file, dtype= self.COLUMN_TYPES, encoding=self.ENCODING)
+        print('loading file ',file)
+        data = pd.read_csv(file, dtype= self.COLUMN_TYPES, encoding=self.ENCODING, error_bad_lines=False)
+        print("HERE !!!! ")
+        print(data.columns)
         data = data.rename(columns = self.COLUMN_RENAMES)
         for column, transform in self.COLUMN_TRANSFORMS.items():
             if(transform =='date_time'):
@@ -267,19 +270,18 @@ class City:
         self.write_clean_data()
         
     def calc_demographics(self,df=None):
-        print(df[['B23025_004E', 'B23025_002E']].dtypes)
         return df.assign(
-                        pc_black = lambda x: x['B03002_004E']/x['B01003_001E'] ,
-                        pc_hispanic = lambda x: x['B03002_012E']/x['B01003_001E'] ,
-                        pc_white = lambda x: x['B03002_003E']/x['B01003_001E'],
-                        pc_asian = lambda x: x['B03002_006E']/x['B01003_001E'],
-                        pc_occupied_homes = lambda x: x['B25003_001E'] / x['B25002_001E'],
+                        pc_black = lambda x: x['B03002_004']/x['B01003_001'] ,
+                        pc_hispanic = lambda x: x['B03002_012']/x['B01003_001'] ,
+                        pc_white = lambda x: x['B03002_003']/x['B01003_001'],
+                        pc_asian = lambda x: x['B03002_006']/x['B01003_001'],
+                        pc_occupied_homes = lambda x: x['B25003_001'] / x['B25002_001'],
 #                         pc_highschool_dep = lambda x: x['B15003_017'],
-                        pc_employed = lambda x: x['B23025_004E']/x['B23025_002E'],
-                        median_rent = lambda x: x['B25058_001E'],                                            
-                        median_income = lambda x: x['B19013_001E'], 
-                        gini_index = lambda x: x['B19083_001E'],
-                        percent_income_spent_on_rent = lambda x: x['B25071_001E']
+                        pc_employed = lambda x: x['B23025_004']/x['B23025_002'],
+                        median_rent = lambda x: x['B25058_001'],                                            
+                        median_income = lambda x: x['B19013_001'], 
+                        gini_index = lambda x: x['B19083_001'],
+                        percent_income_spent_on_rent = lambda x: x['B25071_001']
                  )
         
     def assign_demographics(self,df=None):
@@ -302,7 +304,7 @@ class City:
             data = data[[self.BEATS_IDS_GEOMETRY,'geometry']]
             
             data = data.to_crs({'init':'epsg:4326'})
-            data = Geo.area_weighted_overlap(data,tracts,beat_id=self.BEATS_IDS_GEOMETRY)
+            data = Geo.area_weighted_(data,tracts,beat_id=self.BEATS_IDS_GEOMETRY)
             for year in range(file['start_year'],file['end_year']):
                 data = data.assign(year=year)
                 all_beats_years.append(
