@@ -58,19 +58,19 @@ unemployed_pop : B23025_005
 ## Acessing the data
 The data can be downloaded directly from the following links. It comes in the following forms
 
-1. A csv of all cities combined with demographic data attached.
+1. A csv of [all cities combined](https://dcvera.s3.amazonaws.com/all.zip) with demographic data attached.
 2. A csv for each individual city with demographic data attached.
-   - New Orleans
-   - Dallas
-   - Detroit
-   - Charleston
-   - Seattle
+   - [New Orleans](https://dcvera.s3.amazonaws.com/NewOrleans_with_census.csv.zip)
+   - [Dallas](https://dcvera.s3.amazonaws.com/Dallas_with_census.csv.zip)
+   - [Detroit](https://dcvera.s3.amazonaws.com/Detroit_with_census.csv.zip)
+   - [Charleston](https://dcvera.s3.amazonaws.com/Charleston_with_census.csv.zip)
+   - [Seattle](https://dcvera.s3.amazonaws.com/Seattle_with_census.csv.zip)
 3. A csv for each individual city with no demographic data.
-   - New Orleans
-   - Dallas
-   - Detroit
-   - Charleston
-   - Seattle
+   - [New Orleans](https://dcvera.s3.amazonaws.com/NewOrleans.csv.zip)
+   - [Dallas](https://dcvera.s3.amazonaws.com/Dallas.csv.zip)
+   - [Detroit](https://dcvera.s3.amazonaws.com/Detroit.csv.zip)
+   - [Charleston](https://dcvera.s3.amazonaws.com/Charleston.csv.zip)
+   - [Seattle](https://dcvera.s3.amazonaws.com/Seattle.csv.zip)
 
 
 ## Building the data
