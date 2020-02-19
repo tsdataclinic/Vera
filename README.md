@@ -1,6 +1,6 @@
 ### Vera 911
 
-In 2019 the Vera Institute of Justice partnered with Data Clinic at Two Sigma, to produce a consolidated datasets of 911 data from 5 US cities. Each of these cities publish their open data on their respective open data portals, however the scheme for each dataset, the unit's used for location and time and the categories used to indicate call type etc, all vary wildly from city to city. This repo contains code that downloads, standardizes and consolidates data from these sources. Once standardized, we attach demographic information from the 2017 ACS to provide context to each call. 
+In 2019 the Vera Institute of Justice partnered with Data Clinic at Two Sigma, to produce a consolidated datasets of 911 data from 5 US cities. Each of these cities publish their open data on their respective open data portals, however the scheme for each dataset, the unit's used for location and time and the categories used to indicate call type etc, all vary wildly from city to city. This repo contains code that downloads, standardizes and consolidates data from these sources. Once standardized, we attach demographic information from the 2017 ACS to provide context to each call.
 
 In addition to the code to standardize the data, we include code to make helpful summaries and visualizations of the datasets. See at the end of the readme for how to use this code.
 
@@ -12,17 +12,17 @@ To read about the process of creating this project, check out the 3 blog series 
 
 ## The cities
 
-The cities we have focused on for this project are 
+The cities we have focused on for this project are
 
-1. New Orleans 
+1. New Orleans
 2. Seattle
 3. Dallas
 4. Detroit
 5. Charleston
 
-These where selected because they have the largest coverage of the variables of interest. We are primarily interested in the following variables for each call 
+These where selected because they have the largest coverage of the variables of interest. We are primarily interested in the following variables for each call
 
-1. Call Type : CRS code for each call. 
+1. Call Type : CRS code for each call.
 2. Disposition Type: The outcome of each call.
 3. Response Time: How long it took to respond to each call.
 4. Officer Initiated: Was the call initiated by an officer or not.
@@ -30,7 +30,7 @@ These where selected because they have the largest coverage of the variables of 
 In addition to this we attach the following demographic variables from the 2017 ACS. These variables are assigned based on the tract in which the call was reported to originate in.
 
 ```
-total_pop : B01003_001 
+total_pop : B01003_001
 median_age : B01002_001
 white_pop : B03002_003
 black_pop": B03002_004
@@ -56,6 +56,7 @@ unemployed_pop : B23025_005
 ```
 
 ## Acessing the data
+
 The data can be downloaded directly from the following links. It comes in the following forms
 
 1. A csv of [all cities combined](https://dcvera.s3.amazonaws.com/all.zip) with demographic data attached.
@@ -72,12 +73,11 @@ The data can be downloaded directly from the following links. It comes in the fo
    - [Charleston](https://dcvera.s3.amazonaws.com/Charleston.csv.zip)
    - [Seattle](https://dcvera.s3.amazonaws.com/Seattle.csv.zip)
 
-
 ## Building the data
 
-If you want to build the data from scratch, the easiest way is to use the docker container within this project. To do so run the following commands 
+If you want to build the data from scratch, the easiest way is to use the docker container within this project. To do so run the following commands
 
-```bash 
+```bash
 docker build -t vera .
 docker run -it --rm -v $(pwd):/data /bin/bash
 cd /data
@@ -86,7 +86,7 @@ python generate_dataset.py
 
 This will download the datasets from the various open data portals, apply the standardization procedure and output the results. Depending on your hardware / internet connection the process might take a few hours.
 
-Once the script has run, you can find the data in data/processed. There should be one feather file and one csv file for each city. 
+Once the script has run, you can find the data in data/processed. There should be one feather file and one csv file for each city.
 
 ## Analyzing the data
 
@@ -104,32 +104,31 @@ In addition to simply accessing the data, you can use the following functions on
 - disposition_by_tract(call_type, year, norm_by) : Make a summary of the call outcome (disposition) by census tract.
 - self_initiated_by_call_type(year): Make a summary of the number of calls that are self initiated (officer initiated) vs not by the type of call
 
-
-## Visualizing the data 
+## Visualizing the data
 
 A number of methods for visualizing the data can be found in the src.visualization module. Each of these takes a city object and some additional parameters as an argument and returns a matplotlib plot. For example:
 
-``` 
+```
 from src.cities.new_orleans import NewOrleans
-import src.visualization.visualize as vis 
+import src.visualization.visualize as vis
 
 new_orleans = NewOrleans()
 vis.plot_self_initiated_by_call_type(year=1995)
 ```
 
-An easy way to do this is to start a jupyter lab session in the provided docker container. 
+An easy way to do this is to start a jupyter lab session in the provided docker container.
 
 ```bash
-docker build -t vera . 
-docker run -it --rm  -p 8888:8888 -v $(pwd):/data jupyter lab --ip 0.0.0.0 --NotebookApp.notebook_dir=/data
+docker build -t vera .
+./start_notebook_docker.sh
 ```
 
 then navigate to http://localhost:8888
 
-## Contributing to the project 
+## Contributing to the project
 
-If you find a bug in the data or the processing code, please feel free to open an issue on this repo, describing the problem. 
+If you find a bug in the data or the processing code, please feel free to open an issue on this repo, describing the problem.
 
 If you want to add a new city to the analysis, start by opening an issue on the repo declaring that you would like to do so, then take a look at how cities are specified by opening up one of the existing city config files in src/cities. This should give you an idea of the kinds of things that need to be specified for each city and how to override parts of processing pipeline where necessary.
 
-If you would like to add a new feature to existing cities, take a look at the code in src/features. 
+If you would like to add a new feature to existing cities, take a look at the code in src/features.
