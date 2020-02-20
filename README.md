@@ -93,7 +93,7 @@ Once the script has run, you can find the data in data/processed. There should b
 Once the data has been generated you can use the included classes to easily summarize, visualize and analyse the data. There is a class per city that can be accessed as follows
 
 ```
-import src.cities.new_orleans import NewOrleans
+from src.cities.new_orleans import NewOrleans
 
 new_orleans  = NewOrleans()
 data = new_orleans.clean_data()
