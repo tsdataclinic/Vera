@@ -30,7 +30,8 @@ class Dallas(City):
 
     COLUMN_TYPES = {
         'Victim Zip Code':str,
-        'Victim Business Phone' : str
+        'Victim Business Phone' : str,
+        'Reviewing Officer Badge No':str
     }
     
     END_TIME_COL = 'Call Cleared Date Time'
