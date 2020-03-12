@@ -1,4 +1,4 @@
-### Vera 911
+### 911 calls for service
 
 In 2019 the Vera Institute of Justice (Vera) partnered with Two Sigma Data Clinic to produce a consolidated datasets of 911 data from 5 US cities. Each of these cities publish their the data on their respective open data portals however, the schema for each dataset, the units used for location and time, as well as the categories for each variable, vary wildly from city to city. This repo contains code that downloads, standardizes, and consolidates data from these different sources. Once standardized, we attached demographic information from the 2017 US Census American Community Survey (ACS) to provide additional context to each call.
 
@@ -6,8 +6,8 @@ In addition to the scripts used to standardize the data, we include code for des
 
 To read about the process of creating this project, check out the blog series on Data Clinic's Medium page:
 
-1. Announcing a Consolidated Dataset of 911 Calls for Five US Cities (Part 1)[https://medium.com/dataclinic/announcing-a-consolidated-dataset-of-911-calls-for-five-us-cities-part-1-4320a1a31a88]
-2. Creating a consolidated taxonomy for 911 call data across different US Cities (Part 2)[https://medium.com/dataclinic/creating-a-consolidated-taxonomy-for-911-call-data-across-different-us-cities-part-2-9600cb09abfd]
+1. [Announcing a Consolidated Dataset of 911 Calls for Five US Cities (Part 1)](https://medium.com/dataclinic/announcing-a-consolidated-dataset-of-911-calls-for-five-us-cities-part-1-4320a1a31a88)
+2. [Creating a consolidated taxonomy for 911 call data across different US Cities (Part 2)](https://medium.com/dataclinic/creating-a-consolidated-taxonomy-for-911-call-data-across-different-us-cities-part-2-9600cb09abfd)
 3. Part 3 coming soon.
 
 ## The cities
