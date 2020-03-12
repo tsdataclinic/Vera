@@ -55,7 +55,7 @@ employed_pop : B23025_004
 unemployed_pop : B23025_005
 ```
 
-## Acessing the data
+## Accessing the data
 
 The data can be downloaded directly from the following links. It comes in the following forms:
 
