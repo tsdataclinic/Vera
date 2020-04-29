@@ -8,7 +8,7 @@ To read about the process of creating this project, check out the blog series on
 
 1. [Announcing a Consolidated Dataset of 911 Calls for Five US Cities (Part 1)](https://medium.com/dataclinic/announcing-a-consolidated-dataset-of-911-calls-for-five-us-cities-part-1-4320a1a31a88)
 2. [Creating a consolidated taxonomy for 911 call data across different US Cities (Part 2)](https://medium.com/dataclinic/creating-a-consolidated-taxonomy-for-911-call-data-across-different-us-cities-part-2-9600cb09abfd)
-3. Part 3 coming soon.
+3. [Exploring Temporal and Geographic Patterns of 911 Calls within US Cities (Part 3)](https://medium.com/dataclinic/exploring-temporal-and-geographic-patterns-of-911-calls-within-us-cities-part-3-980c858ff646)
 
 ## The cities
 
