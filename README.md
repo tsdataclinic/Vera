@@ -77,10 +77,23 @@ The data can be downloaded directly from the following links. It comes in the fo
 
 If you want to build the data from scratch, the easiest way is to use the docker container within this project. To do so run the following commands:
 
+### Linux
+
 ```bash
 docker build -t vera .
 docker run -it --rm -v $(pwd):/data /bin/bash
-cd /data
+python generate_dataset.py
+```
+
+### Windows
+
+Share your `c://` drive with Docker via your installed Docker's settings.
+
+Then, from git bash enter the following:
+
+```bash
+docker build -t vera .
+docker run -it --rm -v /$(pwd):/data bash
 python generate_dataset.py
 ```
 
