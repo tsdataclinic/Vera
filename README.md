@@ -82,7 +82,6 @@ If you want to build the data from scratch, the easiest way is to use the docker
 ```bash
 docker build -t vera .
 docker run -it --rm -v $(pwd):/data /bin/bash
-cd /data
 python generate_dataset.py
 ```
 
@@ -95,7 +94,6 @@ Then, from git bash enter the following:
 ```bash
 docker build -t vera .
 docker run -it -v /$(pwd):/data vera bash
-cd /data
 python generate_dataset.py
 ```
 
