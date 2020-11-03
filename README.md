@@ -77,12 +77,27 @@ The data can be downloaded directly from the following links. It comes in the fo
 
 If you want to build the data from scratch, the easiest way is to use the docker container within this project. To do so run the following commands:
 
+### With Docker on Linux
+
 ```bash
 docker build -t vera .
 docker run -it --rm -v $(pwd):/data /bin/bash
-cd /data
 python generate_dataset.py
 ```
+
+### With Docker on Windows
+
+Install [Docker Desktop for Windows](https://docs.docker.com/docker-for-windows/install/#install-docker-desktop-on-windows). Then, share your `c://` drive with Docker via your installed Docker's settings.
+
+Then, from git bash enter the following:
+
+```bash
+docker build -t vera .
+docker run -it -v /$(pwd):/data vera bash
+python generate_dataset.py
+```
+
+> :bulb: Note: If you get an error like "input device is not a TTY", try the same docker run command but with "winpty" appended at the beginning
 
 This will download the datasets from the various open data portals, apply the standardization procedure, and output the results. Depending on your hardware / internet connection the process might take a few hours.
 

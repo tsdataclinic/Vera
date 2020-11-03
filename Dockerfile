@@ -10,3 +10,5 @@ RUN apt-get -y install gdal-bin python3-gdal libspatialindex-dev
 ADD ./requirements.txt requirements.txt
 
 RUN pip install -r requirements.txt
+
+WORKDIR /data
