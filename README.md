@@ -97,6 +97,8 @@ docker run -it -v /$(pwd):/data vera bash
 python generate_dataset.py
 ```
 
+> :bulb: Note: If you get an error like "input device is not a TTY", try the same docker run command but with "winpty" appended at the beginning
+
 This will download the datasets from the various open data portals, apply the standardization procedure, and output the results. Depending on your hardware / internet connection the process might take a few hours.
 
 Once the script has run, you can find the data in data/processed. There should be one feather file and one csv file for each city.
