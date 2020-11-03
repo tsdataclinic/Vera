@@ -87,7 +87,7 @@ python generate_dataset.py
 
 ### With Docker on Windows
 
-Share your `c://` drive with Docker via your installed Docker's settings.
+Install [Docker Desktop for Windows](docs/update-for-windows). Then, share your `c://` drive with Docker via your installed Docker's settings.
 
 Then, from git bash enter the following:
 
