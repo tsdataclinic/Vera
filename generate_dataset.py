@@ -15,23 +15,43 @@ seattle = Seattle()
 detroit = Detroit()
 charleston = Charleston()
 
-new_orleans.process_data()
+import time	
+
+start_time_total = time.perf_counter()
+
+print(f"Starting processing step for Dallas.")
+start_time = time.perf_counter()	
 dallas.process_data()
-detroit.process_data()
+end_time = time.perf_counter()	
+print(f"Dallas processing step took {end_time - start_time:0.4f} seconds")
+
+print(f"Starting cleaning step for Dallas.")
+start_time = time.perf_counter()	
+dallas.clean_data().to_csv('data/processed/Dallas/Dallas.csv', index=False)
+end_time = time.perf_counter()	
+print(f"Dallas cleaning step took {end_time - start_time:0.4f} seconds")
+
+print(f"Starting assign demo step for Dallas.")
+start_time = time.perf_counter()	
+dallas.assign_demographics().drop('geography',index=False).to_csv('data/processed/Dallas/Dallas_with_census.csv', index=False)
+end_time = time.perf_counter()	
+print(f"Dallas assign demo step took {end_time - start_time:0.4f} seconds")
+
+print(f"Starting processing step for charleston.")
+# detroit.process_data()
 charleston.process_data()
+new_orleans.process_data()
 seattle.process_data()
 
 
-new_orleans.clean_data().to_csv('data/processed/NewOrleans/NewOrleans.csv', index=False)
-dallas.clean_data().to_csv('data/processed/Dallas/Dallas.csv', index=False)
-detroit.clean_data().to_csv('data/processed/Detroit/Detroit.csv', index=False)
+# detroit.clean_data().to_csv('data/processed/Detroit/Detroit.csv', index=False)
 charleston.clean_data().to_csv('data/processed/Charleston/Charleston.csv', index=False)
+new_orleans.clean_data().to_csv('data/processed/NewOrleans/NewOrleans.csv', index=False)
 seattle.clean_data().to_csv('data/processed/Seattle/Seattle.csv', index=False)
 
 
-new_orleans.assign_demographics().drop('geography',index=False).to_csv('data/processed/NewOrleans/NewOrleans_with_census.csv', index=False)
-dallas.assign_demographics().drop('geography',index=False).to_csv('data/processed/Dallas/Dallas_with_census.csv', index=False)
-detroit.assign_demographics().drop('geography',index=False).to_csv('data/processed/Detroit/Detroit_with_census.csv', index=False)
+# detroit.assign_demographics().drop('geography',index=False).to_csv('data/processed/Detroit/Detroit_with_census.csv', index=False)
 charleston.assign_demographics().drop('geography',index=False).to_csv('data/processed/Charleston/Charleston_with_census.csv', index=False)
+new_orleans.assign_demographics().drop('geography',index=False).to_csv('data/processed/NewOrleans/NewOrleans_with_census.csv', index=False)
 seattle.assign_demographics().drop('geography',index=False).to_csv('data/processed/Seattle/Seattle_with_census.csv', index=False)
 

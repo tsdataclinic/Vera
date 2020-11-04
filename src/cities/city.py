@@ -7,6 +7,7 @@ from pathlib import Path
 from ..features import geo as Geo, call_types as Calls, time as Time
 from urllib.request import urlretrieve
 import numpy as np
+import time
 
 class City:
     
@@ -264,9 +265,25 @@ class City:
         
     def process_data(self):
         print('procesisng geo for ',self)
+
+        print(f"Starting processing time measurement for geo.")
+        start_time = time.perf_counter()	
         Geo.process(self)
+        end_time = time.perf_counter()	
+        print(f"Dallas geo processing took {end_time - start_time:0.4f} seconds")
+
+        print(f"Starting processing time measurement for calls.")
+        start_time = time.perf_counter()	
         Calls.process(self)
+        end_time = time.perf_counter()	
+        print(f"Dallas calls processing took {end_time - start_time:0.4f} seconds")
+
+        print(f"Starting processing time measurement for time.")
+        start_time = time.perf_counter()	
         Time.process(self)
+        end_time = time.perf_counter()	
+        print(f"Dallas time measurement processing took {end_time - start_time:0.4f} seconds")
+
         self.write_clean_data()
         
     def calc_demographics(self,df=None):
