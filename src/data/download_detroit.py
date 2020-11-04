@@ -13,7 +13,7 @@ DATA_URLS = {
     'all': "https://data.detroitmi.gov/api/views/wgv9-drfc/rows.csv?accessType=DOWNLOAD"
 }
 
-DATE_FORMAT = '%m/%d/%Y %H:%M:%S %p'
+DATE_FORMAT = '%Y-%m-%d %H:%M:%S.%f'
 
 COLUMN_TRANSFORMS = {
     'Call Time' : 'date_time'

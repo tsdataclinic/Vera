@@ -7,7 +7,7 @@ class Detroit(City):
     
     BASE_NAME = 'Detroit'
     DATE_FORMAT = '%Y-%m-%dT%H:%M:%S.%f'
-#    DATE_FORMAT = '%m/%d/%Y %H:%M:%S %p'
+#    DATE_FORMAT = '%Y-%m-%d %H:%M:%S.%f'
 
     DATA_URLS = {
         'all': "https://opendata.arcgis.com/datasets/2dab2f70653f4bb8b4f2b51619ec8329_0.csv"
@@ -49,7 +49,7 @@ class Detroit(City):
     
     RESPONSE_TIME_FACTOR = 60
     RESPONSE_TIME_COLUMN = 'response_time'
-#     INPUT_CRS =  {'init':'EPSG:26971'}
+#     INPUT_CRS =  'EPSG:26971'
 
     GEO_COLUMNS_REMAP = { 'latitude': 'lat' , 'longitude' : 'lng' }
 #     GEO_UNIT_CONVERSION =  0.3048  #Feet to meters

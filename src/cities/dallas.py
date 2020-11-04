@@ -36,7 +36,7 @@ class Dallas(City):
     
     END_TIME_COL = 'Call Cleared Date Time'
         
-    INPUT_CRS =  {'init':'EPSG:32138'}
+    INPUT_CRS =  'EPSG:32138'
     
     
     ENFORCEMENT_VARIABLES=['Arrest Issued']

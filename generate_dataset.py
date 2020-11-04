@@ -15,11 +15,16 @@ seattle = Seattle()
 detroit = Detroit()
 charleston = Charleston()
 
-new_orleans.process_data()
 dallas.process_data()
-detroit.process_data()
-charleston.process_data()
-seattle.process_data()
+# detroit.process_data()
+# charleston.process_data()
+# seattle.process_data()
+
+import time
+start_time = time.perf_counter()
+new_orleans.process_data()
+end_time = time.perf_counter()
+print(f"New Orleans processing took {end_time - start_time:0.4f} seconds")
 
 
 new_orleans.clean_data().to_csv('data/processed/NewOrleans/NewOrleans.csv', index=False)

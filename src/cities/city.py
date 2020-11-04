@@ -42,7 +42,7 @@ class City:
     COLUMN_TRANSFORMS = {}
     
     # Basic data format for dates in the dataset
-    DATE_FORMAT = "%m/%d/%Y %H:%M:%S %p"
+    DATE_FORMAT = "%Y-%m-%d %H:%M:%S.%f"
     
     
     # What columns should map to the variables we need in the final dataset?
@@ -67,7 +67,7 @@ class City:
     ENCODING = 'utf-8'
     
     # Input CRS for the call data geometries assumed 4326 (lng lat)
-    INPUT_CRS =  {'init':'EPSG:4324'}
+    INPUT_CRS =  'EPSG:4324'
     
     # Columns if any to remap the inputs to lat lng
     GEO_COLUMNS_REMAP= {} 
@@ -303,7 +303,7 @@ class City:
             data = gpd.read_file(str(raw_data_path / file['path']))
             data = data[[self.BEATS_IDS_GEOMETRY,'geometry']]
             
-            data = data.to_crs({'init':'epsg:4326'})
+            data = data.to_crs('epsg:4326')
             data = Geo.area_weighted_(data,tracts,beat_id=self.BEATS_IDS_GEOMETRY)
             for year in range(file['start_year'],file['end_year']):
                 data = data.assign(year=year)
@@ -311,7 +311,7 @@ class City:
                     data)
         all_beats_years = pd.concat(all_beats_years)
 
-        return gpd.GeoDataFrame(all_beats_years,geometry='geometry',crs={'init':"epsg:4326"})
+        return gpd.GeoDataFrame(all_beats_years,geometry='geometry',crs="epsg:4326")
     
     def assign_beats(self,df=None):
         if(type(df)==type(None)):
@@ -321,7 +321,7 @@ class City:
         res = df.merge(beats_data, left_on=['beat','year'],
                              right_on=['beat','year'])
 
-        return gpd.GeoDataFrame(res, geometry='geometry', crs={'init':'epsg:4326'})    
+        return gpd.GeoDataFrame(res, geometry='geometry', crs='epsg:4326')    
        
         
     def assign_geometry(self,df=None):
@@ -336,7 +336,7 @@ class City:
                       .set_index('GEOID')
                       .assign(geometry = self.load_tracts().set_index('GEOID').geometry), 
                     geometry='geometry', 
-                    crs={'init':'epsg:4326'}
+                    crs='epsg:4326'
                  )
     
     def norm_by(self,df,norm_by=None):
@@ -358,7 +358,7 @@ class City:
             return df_copy
         if(norm_by=='area'):
             df_copy = df.copy()
-            df_copy[columns] = df_copy[columns].div( gpd.GeoDataFrame(df,geometry='geometry', crs={'init':'epsg:4326'}).to_crs({'init':'epsg:3366'}).geometry.area, axis=0)
+            df_copy[columns] = df_copy[columns].div( gpd.GeoDataFrame(df,geometry='geometry', crs='epsg:4326').to_crs('epsg:3366').geometry.area, axis=0)
             return df_copy 
         
         
@@ -505,7 +505,7 @@ class City:
                       .set_index('GEOID')
                       .assign(geometry = self.load_tracts().set_index('GEOID').geometry), 
                     geometry='geometry', 
-                    crs={'init':'epsg:4326'}
+                    crs='epsg:4326'
                  )
     
     def norm_by(self,df,norm_by=None):
@@ -528,7 +528,7 @@ class City:
             return df_copy
         if(norm_by=='area'):
             df_copy = df.copy()
-            df_copy[columns] = df_copy[columns].div( gpd.GeoDataFrame(df,geometry='geometry', crs={'init':'epsg:4326'}).to_crs({'init':'epsg:3366'}).geometry.area, axis=0)
+            df_copy[columns] = df_copy[columns].div( gpd.GeoDataFrame(df,geometry='geometry', crs='epsg:4326').to_crs('epsg:3366').geometry.area, axis=0)
             return df_copy 
         
         

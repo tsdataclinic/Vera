@@ -2,7 +2,7 @@ from .city import City
 
 class NewOrleans(City):
     BASE_NAME = 'NewOrleans'
-    DATE_FORMAT = '%m/%d/%Y %H:%M:%S %p'
+    DATE_FORMAT = '%Y-%m-%d %H:%M:%S.%f'
     
     COLUMN_TRANSFORMS = {
         'TimeArrive' : 'date_time',
@@ -61,7 +61,7 @@ class NewOrleans(City):
     ## New Orleans data is in state plane coordinates and in feet 
     # rather than meters, this should fix that
     
-    INPUT_CRS =  {'init':'EPSG:26982'}
+    INPUT_CRS =  'EPSG:26982'
 
     GEO_COLUMNS_REMAP = { 'MapY': 'lat' , 'MapX' : 'lng' }
     GEO_UNIT_CONVERSION =  0.3048  #Feet to meters

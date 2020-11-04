@@ -31,21 +31,21 @@ acs = cenpy.products.ACS(2017)
 
 print('Downloading New Orleans')
 new_orleans = acs.from_place('New Orleans, LA',variables=list(columns.values()),level='tract')
-new_orleans.to_crs({"init":'epsg:4326'}).to_file("data/raw/NewOrleans/tracts.geojson")
+new_orleans.to_crs('epsg:4326').to_file("data/raw/NewOrleans/tracts.geojson")
 
 print('Downloading South Carolina')
 charleston = acs.from_state('South Carolina',variables=list(columns.values()),level='tract')
-charleston.to_crs({"init":'epsg:4326'}).to_file("data/raw/Charleston/tracts.geojson")
+charleston.to_crs('epsg:4326').to_file("data/raw/Charleston/tracts.geojson")
 
 print('Downloading Seattle')
 seattle  = acs.from_place('Seattle, WA', variables=list(columns.values()),level='tract',place_type='Incorporated Place')
-seattle.to_crs({"init":'epsg:4326'}).to_file('data/raw/Seattle/tracts.geojson')
+seattle.to_crs('epsg:4326').to_file('data/raw/Seattle/tracts.geojson')
 
 print('Downloading Detroit')
 detroit = acs.from_place('Detroit, MI',variables=list(columns.values()),level='tract',place_type='Incorporated Place')
-detroit.to_crs({"init":'epsg:4326'}).to_file("data/raw/Detroit/tracts.geojson")
+detroit.to_crs('epsg:4326').to_file("data/raw/Detroit/tracts.geojson")
 
 print('Downloading Dallas')
 dallas = acs.from_place('Dallas, MI',variables=list(columns.values()),level='tract', place_type='Incorporated Place')
-dallas.to_crs({"init":'epsg:4326'}).to_file("data/raw/Detroit/tracts.geojson")
+dallas.to_crs('epsg:4326').to_file("data/raw/Detroit/tracts.geojson")
 
