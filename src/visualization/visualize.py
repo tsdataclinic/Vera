@@ -18,7 +18,7 @@ demographics=[
     'pc_hispanic'
 ]
 
-map_crs= {'init':'epsg:3857'}
+map_crs= 'epsg:3857'
         
 def map_self_initiated(city, ax=None, call_type=None, norm_by=None, year=None, vmin=None, vmax=None, scheme=None):
     if(not ax):

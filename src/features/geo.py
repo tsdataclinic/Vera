@@ -21,7 +21,7 @@ CENSUS_VARIABLES = {
      
 }
 INPUT_CRS = {
-    'NewOrleans': {'init':'EPSG:26982'}
+    'NewOrleans': 'EPSG:26982'
 }
 
 GEO_COLUMNS_REMAP= {
