@@ -15,7 +15,7 @@ seattle = Seattle()
 detroit = Detroit()
 charleston = Charleston()
 
-new_orleans.process_data()	
+new_orleans.process_data()
 dallas.process_data()
 detroit.process_data()
 charleston.process_data()
