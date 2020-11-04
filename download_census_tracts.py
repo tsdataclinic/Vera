@@ -4,7 +4,7 @@ columns = {
     'total_pop':'B01003_001',
     "median_age": 'B01002_001',
     "white_pop": 'B03002_003',
-    "black_pop": 'B03002_004',
+    "black_pop": 'B03002_004E',
     "amerindian_pop": 'B03002_005',
     "asian_pop": 'B03002_006',
     "other_race_pop":'B03002_008',

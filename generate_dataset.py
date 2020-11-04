@@ -19,11 +19,11 @@ import time
 
 start_time_total = time.perf_counter()
 
-print(f"Starting processing step for Dallas.")
-start_time = time.perf_counter()	
-dallas.process_data()
-end_time = time.perf_counter()	
-print(f"Dallas processing step took {end_time - start_time:0.4f} seconds")
+# print(f"Starting processing step for Dallas.")
+# start_time = time.perf_counter()	
+# dallas.process_data()
+# end_time = time.perf_counter()	
+# print(f"Dallas processing step took {end_time - start_time:0.4f} seconds")
 
 print(f"Starting cleaning step for Dallas.")
 start_time = time.perf_counter()	
@@ -33,7 +33,7 @@ print(f"Dallas cleaning step took {end_time - start_time:0.4f} seconds")
 
 print(f"Starting assign demo step for Dallas.")
 start_time = time.perf_counter()	
-dallas.assign_demographics().drop('geography',index=False).to_csv('data/processed/Dallas/Dallas_with_census.csv', index=False)
+dallas.assign_demographics().to_csv('data/processed/Dallas/Dallas_with_census.csv', index=False)
 end_time = time.perf_counter()	
 print(f"Dallas assign demo step took {end_time - start_time:0.4f} seconds")
 

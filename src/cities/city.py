@@ -284,21 +284,25 @@ class City:
         end_time = time.perf_counter()	
         print(f"Dallas time measurement processing took {end_time - start_time:0.4f} seconds")
 
+        print(f"Starting writing clean data measurement for time.")
+        start_time = time.perf_counter()
         self.write_clean_data()
+        end_time = time.perf_counter()	
+        print(f"Dallas writing clean data took {end_time - start_time:0.4f} seconds")
         
     def calc_demographics(self,df=None):
         return df.assign(
-                        pc_black = lambda x: x['B03002_004']/x['B01003_001'] ,
-                        pc_hispanic = lambda x: x['B03002_012']/x['B01003_001'] ,
-                        pc_white = lambda x: x['B03002_003']/x['B01003_001'],
-                        pc_asian = lambda x: x['B03002_006']/x['B01003_001'],
-                        pc_occupied_homes = lambda x: x['B25003_001'] / x['B25002_001'],
+                        pc_black = lambda x: x['B03002_004E']/x['B01003_001E'] ,
+                        pc_hispanic = lambda x: x['B03002_012E']/x['B01003_001E'] ,
+                        pc_white = lambda x: x['B03002_003E']/x['B01003_001E'],
+                        pc_asian = lambda x: x['B03002_006E']/x['B01003_001E'],
+                        pc_occupied_homes = lambda x: x['B25003_001E'] / x['B25002_001E'],
 #                         pc_highschool_dep = lambda x: x['B15003_017'],
-                        pc_employed = lambda x: x['B23025_004']/x['B23025_002'],
-                        median_rent = lambda x: x['B25058_001'],                                            
-                        median_income = lambda x: x['B19013_001'], 
-                        gini_index = lambda x: x['B19083_001'],
-                        percent_income_spent_on_rent = lambda x: x['B25071_001']
+                        pc_employed = lambda x: x['B23025_004E']/x['B23025_002E'],
+                        median_rent = lambda x: x['B25058_001E'],                                            
+                        median_income = lambda x: x['B19013_001E'], 
+                        gini_index = lambda x: x['B19083_001E'],
+                        percent_income_spent_on_rent = lambda x: x['B25071_001E']
                  )
         
     def assign_demographics(self,df=None):
