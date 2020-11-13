@@ -20,7 +20,7 @@ DATA_URLS = {
 }
 
 DATE_FORMAT = {
-    'Original Time Queued' : '%m/%d/%Y %H:%M:%S %p',
+    'Original Time Queued' : '%Y-%m-%d %H:%M:%S.%f',
     'Arrived Time' : '%b %d %Y %H:%M:%S:000%p'
 }
 

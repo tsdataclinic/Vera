@@ -21,7 +21,7 @@ CENSUS_VARIABLES = {
      
 }
 INPUT_CRS = {
-    'NewOrleans': {'init':'EPSG:26982'}
+    'NewOrleans': 'EPSG:26982'
 }
 
 GEO_COLUMNS_REMAP= {
@@ -52,7 +52,7 @@ def assign_point_to_census_tract(city, chunk_size=10000):
 def assign_point_to_beat(city, chunk_size=10000):
     print('Joining to tracts')
     result = []
-    beats = city.load_beats().to_crs({'init':'epsg:4326'})
+    beats = city.load_beats().to_crs('epsg:4326')
     calls  = city.processed_data
     for index, chunk in tqdm(calls.groupby(np.arange(calls.shape[0])//chunk_size)):
         result.append( gpd.sjoin(chunk, beats[[city.BEATS_IDS_GEOMETRY, 'geometry']], how='left', op='within'))
@@ -67,7 +67,7 @@ def convert_geo_units(city):
 def generate_points_city(city):
     print('Generating point geometries')
     crs = city.INPUT_CRS
-    lat_lng_crs = {'init':"epsg:4326"}
+    lat_lng_crs = "epsg:4326"
     calls = city.processed_data
     return gpd.GeoDataFrame(calls, 
                            geometry= calls.progress_apply(
@@ -89,15 +89,15 @@ def area_weighted_overlap(beats,tracts,beat_id='beat'):
     # Calculate the intersection shapes between any beats and tracts that overlap
     beats =beats.copy().rename(columns={beat_id:'beat'})
     overlaps  = gpd.overlay(
-                    tracts.to_crs({'init':'epsg:4326'}), 
-                    beats.to_crs({'init':'epsg:4326'})
+                    tracts.to_crs('epsg:4326'), 
+                    beats.to_crs('epsg:4326')
                 )
     # Calculate the area of those overlapping regions
-    overlaps = overlaps.assign(overlap_area = overlaps.to_crs({'init':'epsg:3366'}).area)
+    overlaps = overlaps.assign(overlap_area = overlaps.to_crs('epsg:3366').area)
     # Join back to the census data and caclulate the area of the tracts
     
     overlaps = overlaps.merge(
-        tracts.assign(tract_area = tracts.to_crs({'init':'epsg:3366'}).area)
+        tracts.assign(tract_area = tracts.to_crs('epsg:3366').area)
         [['GEOID', 'tract_area']],
         on="GEOID",
         how='left'

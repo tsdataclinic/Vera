@@ -17,7 +17,7 @@ import pandas as pd
 
 BASE_NAME = 'NewOrleans'
 
-DATE_FORMAT = '%m/%d/%Y %H:%M:%S %p'
+DATE_FORMAT = '%Y-%m-%d %H:%M:%S.%f'
 COLUMN_TRANSFORMS = {
     'TimeArrive' : 'date_time',
     'TimeCreate' : 'date_time',
