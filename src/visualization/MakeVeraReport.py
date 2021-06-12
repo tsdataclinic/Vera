@@ -32,8 +32,8 @@ charleston = Charleston()
 new_orleans.clean_data(reload=True)
 dallas.clean_data(reload=True)
 detroit.clean_data(reload=True)
-charleston.clean_data(reload=True);
-seattle.clean_data(reload=True);
+charleston.clean_data(reload=True)
+seattle.clean_data(reload=True)
 
 ### SUMMARIES
 
