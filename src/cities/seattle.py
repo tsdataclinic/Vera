@@ -27,8 +27,8 @@ class Seattle(City):
     }
 
     DATE_FORMAT = {
-        'Original Time Queued' : '%Y-%m-%d %H:%M:%S.%f',
-        'Arrived Time' : '%b %d %Y %H:%M:%S:000%p'
+        'Original Time Queued' : '%m/%d/%Y %I:%M:%S %p',
+        'Arrived Time' : '%m/%d/%Y %I:%M:%S %p'
     }
 
     COLUMN_TRANSFORMS = {
