@@ -1,3 +1,5 @@
+**This project is no longer maintained by Two Sigma. We continue to encourage independent development.**
+
 ### 911 calls for service
 
 In 2019 the Vera Institute of Justice (Vera) partnered with Two Sigma Data Clinic to produce a consolidated datasets of 911 data from 5 US cities. Each of these cities publish their the data on their respective open data portals however, the schema for each dataset, the units used for location and time, as well as the categories for each variable, vary wildly from city to city. This repo contains code that downloads, standardizes, and consolidates data from these different sources. Once standardized, we attached demographic information from the 2017 US Census American Community Survey (ACS) to provide additional context to each call.
